@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 
 {% block breadcrumbs %}
+
 {% if perms.women.change_women %}
-<p><a href="{% url 'edit_page' post.slug %}">Редактировать</a></p>
+<p><a href="{% url 'edit_page' post.slug %}" id="edit_page_btn">Редактировать</a></p>
+
+
 {% endif %}
 
 <!-- Теги -->
@@ -26,4 +29,8 @@
 {% endif %}
 
 {{post.content|linebreaks}}
+
+
 {% endblock %}
+
+

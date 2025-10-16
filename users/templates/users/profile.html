@@ -17,9 +17,23 @@
     <div class="form-error">{{ f.errors }}</div>
     {% endfor %}
 
-    <p><button type="submit">Сохранить</button></p>
+    <p><button type="submit" id="edit_profile">Сохранить</button></p>
 </form>
+{% block scripts %}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const btn = document.getElementById("edit_profile");
 
+    if (btn) {
+        btn.addEventListener("click", function() {
+            if (window.top100Counter && typeof top100Counter.trackEvent === "function") {
+                top100Counter.trackEvent("edit_profile");
+            }
+        });
+    }
+});
+</script>
+{% endblock %}
 <hr>
 <p><a href="{% url 'users:password_change' %}">Сменить пароль</a></p>
 
