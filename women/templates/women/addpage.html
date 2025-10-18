@@ -9,6 +9,21 @@
     <p><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}</p>
     <div class="form-error">{{ f.errors }}</div>
     {% endfor %}
-    <p><button type="submit">Отправить</button></p>
+    <p><button type="submit" id="сreate-article-btn">Отправить</button></p>
 </form>
+{% block scripts %}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const btn = document.getElementById("create-article-btn");
+
+    if (btn) {
+        btn.addEventListener("click", function() {
+            if (window.top100Counter && typeof top100Counter.trackEvent === "function") {
+                top100Counter.trackEvent("create_article", { action: "create_article__button" });
+            }
+        });
+    }
+});
+</script>
+{% endblock %}
 {% endblock %}
