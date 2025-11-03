@@ -17,6 +17,11 @@
 </form>
 {% block scripts %}
 <script>
+document.getElementById('buy-btn').addEventListener('click', function(){
+   var _tmr = window._tmr || (window._tmr = []);
+  _tmr.push({ id: "3710552", type: "reachGoal", goal: "click_login", value: 1 });
+});
+
 document.addEventListener("DOMContentLoaded", function() {
     const btn = document.getElementById("login-btn");
 
